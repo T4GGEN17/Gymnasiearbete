@@ -1,0 +1,15 @@
+/* ===== GEMENSAMT FÖR HELA WEBBPLATSEN ===== */
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f4f4;
+}
+a{
+    text-decoration:none; /* tar bort understrykning på länkar */
+}
+/* ===== HEADER ===== */
+header{
+    background:#001f5c;
+    color:white;
+    padding:20px;
+}
