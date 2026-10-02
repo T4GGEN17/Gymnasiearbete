@@ -13,3 +13,37 @@ header{
     color:white;
     padding:20px;
 }
+.logo{
+    text-align:center;
+}
+nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:0;
+}
+nav a{
+    color:white;
+    font-weight:bold;
+}
+/* ===== FOOTER ===== */
+footer{
+    margin-top:50px;
+    background:#001f5c;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+/* ===== KNAPPAR ===== */
+button{
+    padding:10px 20px;
+    cursor:pointer;
+}
+/* ===== FORMULÄR ===== */
+form{
+    text-align:center;
+}
+input{
+    padding:10px;
+}

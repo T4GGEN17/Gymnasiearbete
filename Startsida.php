@@ -6,8 +6,7 @@
           content="width=device-width, initial-scale=1.0">
     <title>Red Bull Shop</title>
     <!-- Kopplar css till sidan -->
-    <link rel="stylesheet"
-          href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <?php
@@ -35,32 +34,40 @@ require_once 'assets/header.php';
     <h2>Populära smaker</h2>
     <div class="product-container">
         <div class="product-card">
-            <img src=""
+            <img src="bilder/Redbull-Orginal.avif"
                  alt="Red Bull Original">
             <h3>Red Bull Original</h3>
             <p>19 kr</p>
-            <a href="Produktsida.php">Visa produkt</a>
+            <a href="Produktsida.php">
+                Visa produkt
+            </a>
         </div>
         <div class="product-card">
-            <img src=""
+            <img src="bilder/Redbull-Tropical.jpeg"
                  alt="Red Bull Tropical">
             <h3>Red Bull Tropical</h3>
             <p>21 kr</p>
-            <a href="Produktsida.php">Visa produkt</a>
+            <a href="Produktsida.php">
+                Visa produkt
+            </a>
         </div>
         <div class="product-card">
-            <img src=""
+            <img src="bilder/Redbull-Watermelon.webp"
                  alt="Red Bull Watermelon">
             <h3>Red Bull Watermelon</h3>
             <p>21 kr</p>
-            <a href="Produktsida.php">Visa produkt</a>
+            <a href="Produktsida.php">
+                Visa produkt
+            </a>
         </div>
         <div class="product-card">
-            <img src=""
+            <img src="bilder/Redbull-Peach.webp"
                  alt="Red Bull Peach Edition">
             <h3>Red Bull Peach Edition</h3>
             <p>21 kr</p>
-            <a href="Produktsida.php">Visa produkt</a>
+            <a href="Produktsida.php">
+                Visa produkt
+            </a>
         </div>
     </div>
 </section>
