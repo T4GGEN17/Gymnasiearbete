@@ -28,7 +28,7 @@ nav a{
     font-weight:bold;
 }
 /* ===== FOOTER ===== */
-footer{
+.footer{
     margin-top:50px;
     background:#001f5c;
     color:white;
@@ -46,4 +46,36 @@ form{
 }
 input{
     padding:10px;
+}
+/* ===== PRODUKTKORT ===== */
+.product-container{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+.product-card{
+    width:250px;
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+.product-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+/* ===== STARTSIDA ===== */
+.hero{
+    text-align:center;
+    padding:60px;
+}
+.search{
+    text-align:center;
+    margin-bottom:40px;
+}
+.products{
+    padding:20px;
 }

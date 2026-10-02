@@ -29,3 +29,11 @@ Jag skapade även filerna:
 - assets/header.php
 - assets/footer.php
 - css/style.css
+
+# 2 oktober 2026
+## Vad har jag gjort idag
+Idag har jag fortsätt med css, fixat med header och fotter, samt lagt till några bilder.
+
+## Problem jag stötte på
+Ett problem jag stötte på var att min nya css inte funkade så jag testade några saker och det enda sättet jag hitta
+att få in den nya koden i css in på hemsidan var att göra en ny css utanför foldern css och ta bort den foldern helt, samt den gamla css filen. Så jag la in den koden jag skrivit i den nya css filen och det funkade.
