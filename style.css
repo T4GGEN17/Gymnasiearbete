@@ -79,3 +79,51 @@ input{
 .products{
     padding:20px;
 }
+/* ===== INLOGGNING OCH REGISTRERING ===== */
+.login-container,
+.register-container{
+    width:400px;
+    margin:50px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+/* ===== PROFIL ===== */
+.profile-container{
+    width:800px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+/* ===== VARUKORG ===== */
+.cart-container{
+    width:900px;
+    margin:auto;
+    background:white;
+    padding:20px;
+}
+/* ===== FAVORITER ===== */
+.favorite-container{
+    width:900px;
+    margin:auto;
+}
+/* ===== PRODUKTSIDA ===== */
+.product-page{
+    display:flex;
+    gap:40px;
+    padding:40px;
+}
+.product-image{
+    width:400px;
+}
+.product-info{
+    flex:1;
+}
+/* ===== RECENSIONER ===== */
+.review{
+    background:white;
+    margin:10px 0;
+    padding:15px;
+    border-radius:10px;
+}

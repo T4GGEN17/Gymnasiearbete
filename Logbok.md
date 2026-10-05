@@ -37,3 +37,10 @@ Idag har jag fortsätt med css, fixat med header och fotter, samt lagt till någ
 ## Problem jag stötte på
 Ett problem jag stötte på var att min nya css inte funkade så jag testade några saker och det enda sättet jag hitta
 att få in den nya koden i css in på hemsidan var att göra en ny css utanför foldern css och ta bort den foldern helt, samt den gamla css filen. Så jag la in den koden jag skrivit i den nya css filen och det funkade.
+
+# 5 oktober 2026
+## Vad har jag gjort idag
+Idag har jag forstätt med css så att den är ganska redo för de andra php filerna, sedan har jag arbetat i Alla_Produkter.php filen så man kan se alla de olika smakerna som finns i webbsidan. 
+
+## Problem jag stötte på
+Ett problem jag stötte på var att planera hur jag skulle göra koden för att vissa alla smakerna men efter en stund av planering så lyckades jag hitta ett sätt att göra det på ett smidigt sätt, det enda jobbiga är att lägga till alla bilderna nästa gång.
