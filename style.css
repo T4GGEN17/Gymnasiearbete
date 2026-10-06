@@ -127,3 +127,21 @@ input{
     padding:15px;
     border-radius:10px;
 }
+/* ===== ALLA PRODUKTER ===== */
+.products-page{
+    padding:40px 20px;
+    text-align:center;
+}
+.products-page h2{
+    margin-bottom:25px;
+}
+.product-search{
+    margin-bottom:40px;
+}
+.product-search input{
+    width:300px;
+    padding:10px;
+}
+.product-search button{
+    padding:10px 20px;
+}
