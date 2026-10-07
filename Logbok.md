@@ -59,3 +59,7 @@ Idag har jag laddat ner en massa bilder på olika redbull-smaker och lagt in lä
 
 # 7 oktober 2026
 ## Vad har jag gjort idag
+Idag har jag gjort klart Alla_Produkter filen, gjort css delen och på börjat produktsidan.
+
+## Problem jag stötte på
+Ett problem var hur jag skulle länka alla produkterna till var sin produktsida, men jag tror att jag har hittat en lösning, det får jag se vid ett senare tillfälle.
