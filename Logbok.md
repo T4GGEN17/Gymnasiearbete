@@ -63,3 +63,23 @@ Idag har jag gjort klart Alla_Produkter filen, gjort css delen och på börjat p
 
 ## Problem jag stötte på
 Ett problem var hur jag skulle länka alla produkterna till var sin produktsida, men jag tror att jag har hittat en lösning, det får jag se vid ett senare tillfälle.
+
+
+
+# 9 oktober 2026
+## Vad har jag gjort idag
+Idag har jag arbetat med min produktsida så man kan gå in och så informationen om den, som pris, antal, vilken smak och en liten beskrivning kring smaken. Jag har arbetat i min css så bilderna och texten blir bra och ser bra ut.
+
+## Problem jag stötte på idag
+Ett stort problem var bilderna vissa var för stora, vissa för små, vissa hade texten med information på bilden, detta tog ett tag att fixa och var krongligt. Men efter en lång stund med många försök så lyckades jag nästan klara det, allt var perfekt bild platesen, storleken, texten men med ett problem, det blev dubbleter på alla bilder så varje produkt sida hade 2 bilder av samma smak men det var enkelt att fixa. Jag hade bara råkat lägga till:
+<!--<div class="product-image">
+    <img
+        src="<?php echo htmlspecialchars($product['image']); ?>"
+        alt="<?php echo htmlspecialchars($product['name']); ?>"
+        style="transform: scale(<?php echo $imageSize; ?>);">
+</div>-->
+två gånger vilket skapa dubbleter, så det var bara att ta bort den ena och allt funka.
+
+
+
+# 

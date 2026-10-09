@@ -14,7 +14,11 @@ require_once 'assets/header.php';
 /*
 Visar olika produkter beroende på vilket id som skickas från Alla_produkter.php
 */
-$product = isset($products[$id]) ? $products[$id] : $products[1];
+/*
+Hämtar produktens id från länken.
+Om inget id skickas används id 1.
+*/
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 1;
 $products = [
     1 => [
         "name" => "Red Bull Original",
@@ -47,7 +51,7 @@ $products = [
     5 => [
         "name" => "Red Bull Sugarfree",
         "price" => 19,
-        "image" => "bilder/Redbull-sugarfree.avif",
+        "image" => "bilder/Redbull-Sugarfree.avif",
         "description" => "Sockerfri Red Bull.",
         "stock" => 100
     ],
@@ -75,7 +79,7 @@ $products = [
     9 => [
         "name" => "Red Bull Apricot Edition",
         "price" => 21,
-        "image" => "bilder/Redbull-AprocotEdition.jpg",
+        "image" => "bilder/Redbull-ApricotEdition.jpg",
         "description" => "Aprikos-smak.",
         "stock" => 60
     ],
@@ -158,7 +162,51 @@ $products = [
     ]
 ];
 
-
+/*
+Kontrollerar om produkten finns.
+Om inte visas produkt 1.
+*/
+$product = isset($products[$id]) ? $products[$id] : $products[1];
+?>
+<section class="product-page">
+    <div class="product-image">
+        <img
+            src="<?php echo htmlspecialchars($product['image']); ?>"
+            alt="<?php echo htmlspecialchars($product['name']); ?>">
+    </div>
+    <div class="product-info">
+        <h2>
+            <?php echo htmlspecialchars($product['name']); ?>
+        </h2>
+        <p class="price">
+            Pris: <?php echo $product['price']; ?> kr
+        </p>
+        <p>
+            <?php echo htmlspecialchars($product['description']); ?>
+        </p>
+        <p>
+            Lager: <?php echo $product['stock']; ?> st
+        </p>
+        <!-- Dessa knappar får funktion senare när backend byggs -->
+        <button>Lägg i varukorg</button>
+        <button>Lägg till favorit</button>
+    </div>
+</section>
+<section class="reviews">
+    <h2>Recensioner</h2>
+    <!-- Exempelrecensioner tills databasen används -->
+    <div class="review">
+        <h3>Erik</h3>
+        <p>Betyg: 5/5</p>
+        <p>Min favorit av alla Red Bull-smaker.</p>
+    </div>
+    <div class="review">
+        <h3>Anna</h3>
+        <p>Betyg: 4/5</p>
+        <p>God smak och bra energi.</p>
+    </div>
+</section>
+<?php
 require_once 'assets/footer.php';
 ?>
 </body>
