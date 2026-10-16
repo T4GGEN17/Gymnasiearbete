@@ -1,3 +1,5 @@
+<?php
+session_start();?>
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -8,9 +10,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <?php
 require_once 'assets/header.php';
+?>
+<?php if ($message !== ''): ?>
+    <p class="cart-message">
+        <?php echo htmlspecialchars($message); ?>
+    </p>
+<?php endif; 
 /*
 Visar olika produkter beroende på vilket id som skickas från Alla_produkter.php
 */
@@ -167,6 +174,32 @@ Kontrollerar om produkten finns.
 Om inte visas produkt 1.
 */
 $product = isset($products[$id]) ? $products[$id] : $products[1];
+// Hanterar när kunden lägger en produkt i varukorgen
+if ($_SERVER['REQUEST_METHOD'] === 'POST'
+    && isset($_POST['add_to_cart'])) {
+    $cartId = $id;
+    // Skapar varukorgen om den inte redan finns
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = [];
+    }
+    // Ökar antalet om produkten redan finns
+    if (isset($_SESSION['cart'][$cartId])) {
+        $_SESSION['cart'][$cartId]['quantity']++;
+    } else {
+        // Sparar produktens information i varukorgen
+        $_SESSION['cart'][$cartId] = [
+            'name' => $product['name'],
+            'price' => $product['price'],
+            'image' => $product['image'],
+            'quantity' => 1
+        ];
+    }
+    // Sparar ett meddelande som visas i varukorgen
+    $_SESSION['cart_message'] = $product['name']
+        . ' har lagts till i varukorgen!';
+    header('Location: Varukorg.php');
+    exit;
+}
 ?>
 <section class="product-page">
     <div class="product-image">
@@ -187,9 +220,10 @@ $product = isset($products[$id]) ? $products[$id] : $products[1];
         <p>
             Lager: <?php echo $product['stock']; ?> st
         </p>
-        <!-- Dessa knappar får funktion senare när backend byggs -->
-        <button>Lägg i varukorg</button>
-        <button>Lägg till favorit</button>
+        <form action="Produktsida.php?id=<?php echo $id; ?>" method="POST">
+            <button type="submit" name="add_to_cart">Lägg i varukorg</button>
+        </form>
+            <button type="button">Lägg till favorit</button>
     </div>
 </section>
 <section class="reviews">

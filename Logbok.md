@@ -82,4 +82,9 @@ två gånger vilket skapa dubbleter, så det var bara att ta bort den ena och al
 
 
 
-# 
+# 16 oktober 2026
+## Vad har jag gjort idag
+Idag har jag påbörjat med varukorg.php och försökt göra ändringar i produktsidan och css för att göra så man tex får någon visuellt meddelande när man lägger något i varukorgen och så man kan lägga till saker i varukorgen.
+
+## Problem jag stötte på 
+Problem som jag har stött på idag är att knappen varukorg på produktsidan har flyttats till höger men det blir problem till nästa gång. Och sen fick jag inte till så man kan lägga till saker i varukorgen men det är löst nu.
