@@ -157,8 +157,19 @@ margin:0 auto;
     font-size: 22px;
     font-weight: bold;
 }
+/* Knappar på produktsidan */
 .product-page .product-info button {
+    display: inline-block;
     margin: 8px 8px 0 0;
+    vertical-align: middle;
+}
+.product-page .product-info form {
+    display: inline-block;
+    margin: 8px 8px 0 0;
+    text-align: left;
+}
+.product-page .product-info form button {
+    margin: 0;
 }
 @media (max-width: 700px) {
     .product-page {
@@ -209,32 +220,48 @@ margin:0 auto;
 .product-search button{
     padding:10px 20px;
 }
-/* Varukorgens layout */
+/* ===== VARUKORG ===== */
 .cart-page {
-    max-width: 1000px;
+    max-width: 900px;
     margin: 30px auto;
     padding: 20px;
+    box-sizing: border-box;
 }
-/* En produkt i varukorgen */
 .cart-item {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
     padding: 20px 0;
+    margin: 0;
     border-bottom: 1px solid #ccc;
 }
-/* Produktbilden */
 .cart-item img {
     width: 120px;
     height: 140px;
     object-fit: contain;
+    flex-shrink: 0;
 }
-/* Produktinformationen */
 .cart-item-info {
     flex: 1;
+    min-width: 0;
 }
 .cart-item-info h2 {
     margin-top: 0;
+}
+.cart-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0;
+}
+.cart-quantity form,
+.cart-item-info form {
+    margin: 0;
+    text-align: left;
+}
+.cart-quantity button {
+    min-width: 40px;
+    padding: 8px 12px;
 }
 .cart-item-info button {
     cursor: pointer;
@@ -246,4 +273,19 @@ margin:0 auto;
     border-radius: 6px;
     margin: 20px;
     font-weight: bold;
+}
+@media (max-width: 600px) {
+    .cart-page {
+        padding: 12px;
+    }
+
+    .cart-item {
+        gap: 12px;
+        padding: 15px 0;
+    }
+
+    .cart-item img {
+        width: 85px;
+        height: 110px;
+    }
 }

@@ -38,8 +38,8 @@ require_once 'assets/header.php';
                  alt="Red Bull Original">
             <h3>Red Bull Original</h3>
             <p>19 kr</p>
-            <a href="Produktsida.php">
-                Visa produkt
+            <a href="Produktsida.php?id=1">
+            Visa produkt
             </a>
         </div>
         <div class="product-card">
@@ -47,7 +47,7 @@ require_once 'assets/header.php';
                  alt="Red Bull Tropical">
             <h3>Red Bull Tropical</h3>
             <p>21 kr</p>
-            <a href="Produktsida.php">
+            <a href="Produktsida.php?id=2">
                 Visa produkt
             </a>
         </div>
@@ -56,7 +56,7 @@ require_once 'assets/header.php';
                  alt="Red Bull Watermelon">
             <h3>Red Bull Watermelon</h3>
             <p>21 kr</p>
-            <a href="Produktsida.php">
+            <a href="Produktsida.php?id=3">
                 Visa produkt
             </a>
         </div>
@@ -65,7 +65,7 @@ require_once 'assets/header.php';
                  alt="Red Bull Peach Edition">
             <h3>Red Bull Peach Edition</h3>
             <p>21 kr</p>
-            <a href="Produktsida.php">
+            <a href="Produktsida.php?id=4">
                 Visa produkt
             </a>
         </div>

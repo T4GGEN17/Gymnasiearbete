@@ -88,3 +88,15 @@ Idag har jag påbörjat med varukorg.php och försökt göra ändringar i produk
 
 ## Problem jag stötte på 
 Problem som jag har stött på idag är att knappen varukorg på produktsidan har flyttats till höger men det blir problem till nästa gång. Och sen fick jag inte till så man kan lägga till saker i varukorgen men det är löst nu.
+
+
+
+# 20 oktober 2026
+## Vad har jag gjort idag
+Idag har jag fortsatt arbeta med varukorgen i min Red Bull Shop. Jag har fixat så att man kan öka och minska antalet produkter direkt i varukorgen och ta bort en produkt eller alla exemplar av samma produkt. Jag har också ändrat CSS-koden för att förbättra utseendet och placeringen av produkterna och knapparna. Sedan har jag fixat länkarna på startsidan så att knappen ”Visa produkt” leder till rätt smak. Jag har även tagit bort ett grönt meddelande som visades på produktsidan.
+
+## Problem jag stötte på
+Ett problem jag stötte på var att knapparna i varukorgen låg ojämnt och att det inte gick att ändra antalet direkt på sidan. När jag försökte ta bort en produkt försvann alla exemplar av samma produkt. Jag hade också problem med att alla populära smaker på startsidan ledde till Red Bull Original. Till sist upptäckte jag en grön rektangel på produktsidorna. Jag löste problemen genom att ändra PHP-koden och CSS-koden, så att varukorgen fungerar bättre och länkarna leder till rätt produkter.
+
+
+#

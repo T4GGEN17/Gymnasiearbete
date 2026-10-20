@@ -1,15 +1,43 @@
 <?php
 session_start();
-// Ta bort en produkt från varukorgen
-if ($_SERVER['REQUEST_METHOD'] === 'POST'
-    && isset($_POST['remove_product'])) {
-    $id = (int) $_POST['remove_product'];
+// Ta bort eller ändra antal på en produkt
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Hämta produktens ID
+    $id = (int) ($_POST['product_id'] ?? 0);
     if (isset($_SESSION['cart'][$id])) {
-        unset($_SESSION['cart'][$id]);
+        // Minska antalet med 1
+        if (isset($_POST['decrease'])) {
+            $_SESSION['cart'][$id]['quantity']--;
+            // Ta bort produkten helt om antalet blir 0
+            if ($_SESSION['cart'][$id]['quantity'] <= 0) {
+                unset($_SESSION['cart'][$id]);
+            }
+        }
+        // Öka antalet med 1
+        if (isset($_POST['increase'])) {
+            $_SESSION['cart'][$id]['quantity']++;
+        }
+        // Ta bort alla exemplar av produkten
+        if (isset($_POST['remove_product'])) {
+            unset($_SESSION['cart'][$id]);
+        }
     }
+    // Ladda om varukorgen så att summan uppdateras
     header('Location: Varukorg.php');
     exit;
 }
+// Hämta varukorgen
+$cart = $_SESSION['cart'] ?? [];
+// Hämta ett meddelande om en produkt lagts till
+$message = $_SESSION['cart_message'] ?? '';
+unset($_SESSION['cart_message']);
+// Räkna ut totalpriset
+$total = 0;
+foreach ($cart as $item) {
+    $total += $item['price'] * $item['quantity'];
+}
+?>
+<?php
 // Hämta den uppdaterade varukorgen EFTER borttagningen
 $cart = $_SESSION['cart'] ?? [];
 // Hämta ett meddelande om en produkt lagts till
@@ -52,7 +80,26 @@ foreach ($cart as $item) {
                         <?php echo number_format($item['price'], 2, ',', ' '); ?> kr
                     </p>
                     <p>
-                        Antal: <?php echo (int) $item['quantity']; ?>
+                        <div class="cart-quantity">
+                            <form action="Varukorg.php" method="POST">
+                                <input type="hidden" name="product_id"
+                                        value="<?php echo (int) $id; ?>">
+                                <button type="submit" name="decrease">−</button>
+                            </form>
+                            <span><?php echo (int) $item['quantity']; ?></span>
+                            <form action="Varukorg.php" method="POST">
+                                <input type="hidden" name="product_id"
+                                        value="<?php echo (int) $id; ?>">
+                                <button type="submit" name="increase">+</button>
+                            </form>
+                        </div>
+                            <form action="Varukorg.php" method="POST">
+                                <input type="hidden" name="product_id"
+                                        value="<?php echo (int) $id; ?>">
+                                <button type="submit" name="remove_product">
+                                Ta bort alla                                
+                                </button>
+                            </form>
                     </p>
                     <p>
                         Delsumma:
@@ -63,13 +110,6 @@ foreach ($cart as $item) {
                             ' '
                         ); ?> kr
                     </p>
-                    <form action="Varukorg.php" method="POST">
-                        <button
-                            type="submit"
-                            name="remove_product"
-                            value="<?php echo (int) $id; ?>">Ta bort
-                        </button>
-                    </form>
                 </div>
             </div>
         <?php endforeach; ?>

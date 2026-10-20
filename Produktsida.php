@@ -13,11 +13,7 @@ session_start();?>
 <?php
 require_once 'assets/header.php';
 ?>
-<?php if ($message !== ''): ?>
-    <p class="cart-message">
-        <?php echo htmlspecialchars($message); ?>
-    </p>
-<?php endif; 
+<?php
 /*
 Visar olika produkter beroende på vilket id som skickas från Alla_produkter.php
 */
