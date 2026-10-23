@@ -99,4 +99,14 @@ Idag har jag fortsatt arbeta med varukorgen i min Red Bull Shop. Jag har fixat s
 Ett problem jag stötte på var att knapparna i varukorgen låg ojämnt och att det inte gick att ändra antalet direkt på sidan. När jag försökte ta bort en produkt försvann alla exemplar av samma produkt. Jag hade också problem med att alla populära smaker på startsidan ledde till Red Bull Original. Till sist upptäckte jag en grön rektangel på produktsidorna. Jag löste problemen genom att ändra PHP-koden och CSS-koden, så att varukorgen fungerar bättre och länkarna leder till rätt produkter.
 
 
-#
+
+# 23 oktober 2026
+## Vad har jag gjort idag
+Idag har först fixat så "Populära smaker" på Startsida.php ligger i mitten centrerat istället för på kanten, sedan så har jag fixat med favoritfunktionen så att alla 20 produkter kan läggas till och tas bort. Jag har även lagt till notifikationer när en produkt läggs till som favorit.
+
+## Problem jag stötte på
+Favoritsidan visade bara fyra produkter och det saknades notifikationer. Jag löste detta genom att lägga till alla produkter och använda sessioner för meddelanden.
+
+
+
+# 

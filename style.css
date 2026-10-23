@@ -81,6 +81,18 @@ margin:0 auto;
 .products{
     padding:20px;
 }
+/* Centrerar rubriken Populära smaker */
+.products h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+/* Centrerar produktkorten */
+.products .product-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 /* ===== INLOGGNING OCH REGISTRERING ===== */
 .login-container,
 .register-container{
@@ -98,17 +110,19 @@ margin:0 auto;
     padding:20px;
     border-radius:10px;
 }
-/* ===== VARUKORG ===== */
-.cart-container{
-    width:900px;
-    margin:auto;
-    background:white;
-    padding:20px;
-}
 /* ===== FAVORITER ===== */
 .favorite-container{
     width:900px;
     margin:auto;
+}
+/* Meddelande när en favorit läggs till */
+.favorite-message {
+    background-color: #e0f5e5;
+    color: #176b32;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin: 15px 0;
+    font-weight: bold;
 }
 /* ===== PRODUKTSIDA ===== */
 .product-page {
@@ -221,6 +235,12 @@ margin:0 auto;
     padding:10px 20px;
 }
 /* ===== VARUKORG ===== */
+.cart-container{
+    width:900px;
+    margin:auto;
+    background:white;
+    padding:20px;
+}
 .cart-page {
     max-width: 900px;
     margin: 30px auto;

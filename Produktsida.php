@@ -1,5 +1,30 @@
 <?php
-session_start();?>
+session_start();
+// Skapar en favoritlista om den inte finns
+if (!isset($_SESSION['favorites'])) {
+    $_SESSION['favorites'] = [];
+}
+// Hämtar produktens id
+$id = isset($_GET['id']) ? (int) $_GET['id'] : 1;
+// Lägg till favorit
+if (isset($_POST['add_favorite'])) {
+    // Kontrollerar om produkten redan är favorit
+    if (!in_array($id, $_SESSION['favorites'])) {
+        // Lägger till produkten i favoritlistan
+        $_SESSION['favorites'][] = $id;
+        // Sparar ett meddelande
+        $_SESSION['favorite_message'] = $product['name']
+              . ' har lagts till i favoriter!';
+    } else {
+        // Meddelande om produkten redan är favorit
+        $_SESSION['favorite_message'] = $product['name']
+              . ' finns redan i favoriter!';
+    }
+    // Skickar tillbaka användaren till produktsidan
+    header("Location: Produktsida.php?id=" . $id);
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -207,6 +232,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
         <h2>
             <?php echo htmlspecialchars($product['name']); ?>
         </h2>
+        <?php
+        // Hämtar meddelandet
+        $favoriteMessage = $_SESSION['favorite_message'] ?? '';
+        // Tar bort meddelandet efter att det hämtats
+        unset($_SESSION['favorite_message']);
+        ?>
+<?php if ($favoriteMessage !== ''): ?>
+    <p class="favorite-message">
+        <?php echo htmlspecialchars($favoriteMessage); ?>
+    </p>
+<?php endif; ?>
         <p class="price">
             Pris: <?php echo $product['price']; ?> kr
         </p>
@@ -219,7 +255,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
         <form action="Produktsida.php?id=<?php echo $id; ?>" method="POST">
             <button type="submit" name="add_to_cart">Lägg i varukorg</button>
         </form>
-            <button type="button">Lägg till favorit</button>
+        <form action="Produktsida.php?id=<?php echo $id; ?>"
+              method="POST">
+                <button type="submit" name="add_favorite">
+                    Lägg till favorit
+                </button>
+</form>
     </div>
 </section>
 <section class="reviews">
