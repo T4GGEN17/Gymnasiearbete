@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "Redbull-admin";
+$password = "1234";
 $database = "mydb";
 
 $conn = new mysqli(

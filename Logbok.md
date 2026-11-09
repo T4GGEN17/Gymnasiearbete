@@ -108,5 +108,12 @@ Idag har först fixat så "Populära smaker" på Startsida.php ligger i mitten c
 Favoritsidan visade bara fyra produkter och det saknades notifikationer. Jag löste detta genom att lägga till alla produkter och använda sessioner för meddelanden.
 
 
+ 
+# 9 november 2026
+## Vad har jag gjort idag
+Idag har jag arbetat med registreringssidan till min Red Bull Shop. Jag har kopplat sidan till databasen och skapat ett registreringsformulär där användaren kan fylla i namn, användarnamn, e-post, lösenord, adress, postnummer, ort och telefonnummer. Jag har även lagt till en kontroll som ser till att lösenorden matchar och att lösenordet sparas krypterat (hashat) i databasen.
 
-# 
+## Problem jag stötte på
+- Jag hade råkat lägga in två formulärtaggar (`<form>`) i varandra och behövde ta bort den ena.
+
+- Jag fick ett HTTP Error 500 när jag försökte öppna registreringssidan.Efter felsökning upptäckte jag att problemet låg i databasanslutningen. Jag rättade databasanslutningen och kunde sedan lösa problemet.
