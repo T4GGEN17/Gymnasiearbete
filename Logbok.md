@@ -117,3 +117,16 @@ Idag har jag arbetat med registreringssidan till min Red Bull Shop. Jag har kopp
 - Jag hade råkat lägga in två formulärtaggar (`<form>`) i varandra och behövde ta bort den ena.
 
 - Jag fick ett HTTP Error 500 när jag försökte öppna registreringssidan.Efter felsökning upptäckte jag att problemet låg i databasanslutningen. Jag rättade databasanslutningen och kunde sedan lösa problemet.
+
+
+
+# 10 november 2026
+## Vad har jag gjort idag?
+Idag har jag arbetat med inloggningssidan och profilsidan till min Red Bull-webbshop. Jag har skapat en inloggningsfunktion där användaren kan logga in med sitt användarnamn eller sin e-postadress och sitt lösenord. Jag har även lagt till CSS för att göra inloggningssidan snyggare precis resten av hemsidan.
+
+## Problem jag stötte på
+Ett problem var att få inloggningen att fungera tillsammans med databasen och kontrollera att användarens lösenord stämmer. Jag behövde också se till att rätt användare hämtas från databasen. Jag löste detta genom att använda PHP-sessioner och kontrollera lösenordet med `password_verify()`.
+
+
+
+#

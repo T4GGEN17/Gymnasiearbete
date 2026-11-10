@@ -102,6 +102,104 @@ margin:0 auto;
     padding:20px;
     border-radius:10px;
 }
+/* ===== REGISTRERING ===== */
+.register-container {
+    max-width: 400px;
+    width: 90%;
+    margin: 40px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+.register-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.register-container label {
+    text-align: left;
+    font-weight: bold;
+}
+.register-container input {
+    width: 100%;
+    box-sizing: border-box;
+}
+.register-container button {
+    background: #001f5c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.register-container p {
+    text-align: center;
+    margin-top: 20px;
+}
+/* Inloggningssida */
+.login-container {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.login-container h1 {
+    text-align: center;
+    color: #001f5c;
+    margin-bottom: 25px;
+}
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.login-container label {
+    font-weight: bold;
+}
+.login-container input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.login-container button {
+    padding: 12px;
+    background-color: #001f5c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.login-container button:hover {
+    background-color: #003080;
+}
+.login-container p {
+    text-align: center;
+    margin-top: 20px;
+}
+.login-container a {
+    color: #001f5c;
+    font-weight: bold;
+    text-decoration: none;
+}
+.login-container a:hover {
+    text-decoration: underline;
+}
+.error-message {
+    color: #b00020;
+    background-color: #ffe5e5;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
 /* ===== PROFIL ===== */
 .profile-container{
     width:800px;
@@ -308,42 +406,4 @@ margin:0 auto;
         width: 85px;
         height: 110px;
     }
-}
-/* ===== REGISTRERING ===== */
-.register-container {
-    max-width: 400px;
-    width: 90%;
-    margin: 40px auto;
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-sizing: border-box;
-}
-.register-container h2 {
-    text-align: center;
-    margin-bottom: 25px;
-}
-.register-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.register-container label {
-    text-align: left;
-    font-weight: bold;
-}
-.register-container input {
-    width: 100%;
-    box-sizing: border-box;
-}
-.register-container button {
-    background: #001f5c;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-.register-container p {
-    text-align: center;
-    margin-top: 20px;
 }
