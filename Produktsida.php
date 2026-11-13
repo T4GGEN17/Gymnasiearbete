@@ -1,44 +1,15 @@
 <?php
 session_start();
+
 // Skapar en favoritlista om den inte finns
 if (!isset($_SESSION['favorites'])) {
     $_SESSION['favorites'] = [];
 }
+
 // Hämtar produktens id
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 1;
-// Lägg till favorit
-if (isset($_POST['add_favorite'])) {
-    // Kontrollerar om produkten redan är favorit
-    if (!in_array($id, $_SESSION['favorites'])) {
-        // Lägger till produkten i favoritlistan
-        $_SESSION['favorites'][] = $id;
-        // Sparar ett meddelande
-        $_SESSION['favorite_message'] = $product['name']
-              . ' har lagts till i favoriter!';
-    } else {
-        // Meddelande om produkten redan är favorit
-        $_SESSION['favorite_message'] = $product['name']
-              . ' finns redan i favoriter!';
-    }
-    // Skickar tillbaka användaren till produktsidan
-    header("Location: Produktsida.php?id=" . $id);
-    exit;
-}
-?>
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produktsida - Red Bull Shop</title>
-    <!-- Kopplar ihop sidan med den gemensamma css-filen -->
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<?php
-require_once 'assets/header.php';
-?>
-<?php
+
+
 /*
 Visar olika produkter beroende på vilket id som skickas från Alla_produkter.php
 */
@@ -47,6 +18,28 @@ Hämtar produktens id från länken.
 Om inget id skickas används id 1.
 */
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 1;
+// Hanterar när kunden lägger till en favorit
+if (isset($_POST['add_favorite'])) {
+
+    // Kontrollera om användaren är inloggad
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: Inloggning.php");
+        exit;
+    }
+
+    // Kontrollerar om produkten redan är favorit
+    if (!in_array($id, $_SESSION['favorites'])) {
+        $_SESSION['favorites'][] = $id;
+        $_SESSION['favorite_message'] = $product['name']
+            . ' har lagts till i favoriter!';
+    } else {
+        $_SESSION['favorite_message'] = $product['name']
+            . ' finns redan i favoriter!';
+    }
+
+    header("Location: Produktsida.php?id=" . $id);
+    exit;
+}
 $products = [
     1 => [
         "name" => "Red Bull Original",
@@ -198,6 +191,11 @@ $product = isset($products[$id]) ? $products[$id] : $products[1];
 // Hanterar när kunden lägger en produkt i varukorgen
 if ($_SERVER['REQUEST_METHOD'] === 'POST'
     && isset($_POST['add_to_cart'])) {
+    // Kontrollera om användaren är inloggad
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: Inloggning.php");
+        exit;
+    }
     $cartId = $id;
     // Skapar varukorgen om den inte redan finns
     if (!isset($_SESSION['cart'])) {
@@ -221,6 +219,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
     header('Location: Varukorg.php');
     exit;
 }
+?>
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produktsida - Red Bull Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<?php
+require_once 'assets/header.php';
 ?>
 <section class="product-page">
     <div class="product-image">

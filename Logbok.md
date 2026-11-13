@@ -129,4 +129,22 @@ Ett problem var att få inloggningen att fungera tillsammans med databasen och k
 
 
 
+# 13 november 2026
+## Vad har jag gjort idag?
+Idag har jag gjort klart profilsidan till Red Bull Shopen. Jag har gjort så man kan se alla sina inloggnings uppgifter samt css. Jag har även gjort så man kan bara lägga till saker till favortiter och varukorg om man är inloggad. Dock så sparas inte en användares favoriter och varukorg när man loggat ut.
+
+## Problem jag stötte på 
+Ett problem jag hade var när jag skulle göra så man bara kan lägga till saker till favortiter och varukorg om man är inloggad. Där jag behövde ändra en del i produktsidan för att det skulle funka.
+
+## Minimum kvar att göra
+- Favoriter och varukorg sparas för användare.
+- Göra om navigatorn till tre streck man kan trycka på i hörnet så det kommer ut från sidan.
+- Knappar + och - 10 i varukorg.
+- Inte skickas till toppen av hemsidan när man lägger till saker i varukorgen när man trycker på knapparna.
+- Fixa footer så den inte hamnar mitt på skärmen när sidan är tom. 
+- Göra så man inte kan logga in när man redan är inloggad. 
+- Fixa Red Bull Lime Edition bilden.
+
+
+
 #
