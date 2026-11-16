@@ -20,7 +20,7 @@ $products = [
     14 => ['name' => 'Red Bull Red Edition', 'price' => 21, 'image' => 'bilder/Redbull-RedEdition.jpg'],
     15 => ['name' => 'Red Bull Yellow Edition', 'price' => 21, 'image' => 'bilder/Redbull-YellowEdition.webp'],
     16 => ['name' => 'Red Bull Purple Edition', 'price' => 22, 'image' => 'bilder/Redbull-PurpleEdition.webp'],
-    17 => ['name' => 'Red Bull Lime Edition', 'price' => 22, 'image' => 'bilder/Redbull-LimeEdition.webp'],
+    17 => ['name' => 'Red Bull Lime Edition', 'price' => 22, 'image' => 'bilder/Redbull-LimeEdition.jpg'],
     18 => ['name' => 'Red Bull Lilac Edition', 'price' => 22, 'image' => 'bilder/Redbull-LilacEdition.png'],
     19 => ['name' => 'Red Bull Summer Edition', 'price' => 22, 'image' => 'bilder/Redbull-SummerEdition.png'],
     20 => ['name' => 'Red Bull Winter Edition', 'price' => 22, 'image' => 'bilder/Redbull-WinterEdition.webp']

@@ -137,7 +137,7 @@ $search = isset($_GET['search']) ? $_GET['search'] : '';
                 "id" => 17,
                 "name" => "Red Bull Lime Edition",
                 "price" => 22,
-                "image" => "bilder/Redbull-LimeEdition.webp"
+                "image" => "bilder/Redbull-LimeEdition.jpg"
             ],
             [
                 "id" => 18,

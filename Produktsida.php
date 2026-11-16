@@ -156,7 +156,7 @@ $products = [
     17 => [
         "name" => "Red Bull Lime Edition",
         "price" => 22,
-        "image" => "bilder/Redbull-LimeEdition.webp",
+        "image" => "bilder/Redbull-LimeEdition.jpg",
         "description" => "Lime Edition.",
         "stock" => 55
     ],

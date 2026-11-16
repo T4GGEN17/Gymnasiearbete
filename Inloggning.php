@@ -1,5 +1,10 @@
 <?php
 session_start();
+// Kontrollera om användaren redan är inloggad
+if (isset($_SESSION["user_id"])) {
+    header("Location: Startsida.php");
+    exit;
+}
 require_once 'assets/db.php';
 $felmeddelande = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -19,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["user_id"] = $user["user_id"];
             $_SESSION["namn"] = $user["namn"];
             $_SESSION["anvandarnamn"] = $user["användarnamn"];
-            header("Location: Profilsida.php");
+            header("Location: Startsida.php");
             exit;
         } else {
             $felmeddelande = "Fel användarnamn eller lösenord.";

@@ -147,4 +147,19 @@ Ett problem jag hade var när jag skulle göra så man bara kan lägga till sake
 
 
 
-#
+# 16 November 2026
+## Vad har jag gjort idag?
+Idag har jag lagt till en ny bild på Red Bull Lime Edition, knappar för + och -10 i varukorgen ifall man ska ha fler så man enklare kan få fler. Jag har även gjort så när man loggar in och om man redan är inloggad så kommer man till startsidan istället för att komma till profilen. Sen har jag även lagt till en ny navigator (en hamburgarmeny) så att det ska se bättre ut. 
+
+## Problem jag stötte på
+Idag hade jag problem med varukorgen, där jag försökte lägga till knappar för att öka och minska antalet produkter med 10. Jag behövde rätta till PHP-koden och HTML-strukturen. Jag hade även problem med att få navigationsmenyn att fungera på alla sidor eftersom HTML-koden i header.php behövde anpassas till sidornas befintliga HTML-struktur. 
+
+## Minimum kvar att göra
+- Favoriter och varukorg sparas för användare.
+- Lägg till en tömma alla på en produkt knapp i varukorg och skriva in själv hur många man vill ha.
+- Inte skickas till toppen av hemsidan när man lägger till saker i varukorgen när man trycker på knapparna.
+- Fixa footer så den inte hamnar mitt på skärmen när sidan är tom.
+- Fixa vissa produktbilder som är små. 
+- Flytta på kryset för att gå ut ur navigatorn till höger.
+- Göra så man kan köpa. 
+- När man loggat in ska det komma upp Hej och sen användarnamnet på startsidan.
