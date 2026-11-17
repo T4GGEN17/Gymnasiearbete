@@ -10,21 +10,19 @@
 <body>
 <?php
 require_once 'assets/header.php';
-/*
-Hämtar det användaren har skrivit i sökfältet.
-Om inget har sökts efter blir variabeln tom.
-*/
-$search = isset($_GET['search']) ? $_GET['search'] : '';
+$search = isset($_GET['search']) ? $_GET['search'] : '';/*Hämtar det användaren har skrivit i sökfältet. Om inget har sökts efter blir den tom.*/
 ?>
 <section class="products-page">
     <h2>Alla Red Bull-smaker</h2>
     <!-- Sökruta även på produktsidan -->
     <form class="product-search" action="Alla_produkter.php" method="GET">
+        
+        <!-- Sökfält där användaren skriver in en smak --> <!-- Value rad: Visar det tidigare sökordet i sökfältet -->
         <input
             type="text"
             name="search"
             placeholder="Sök efter smak..."
-            value="<?php echo htmlspecialchars($search); ?>"
+            value="<?php echo htmlspecialchars($search); ?>" 
         >
         <button type="submit">
             Sök
@@ -158,32 +156,27 @@ $search = isset($_GET['search']) ? $_GET['search'] : '';
                 "image" => "bilder/Redbull-WinterEdition.webp"
             ]
         ];
- /*
-        Går igenom alla produkter en i taget.
-        */
-        foreach ($products as $product) {
 
-            /*
-            Om användaren har sökt kontrolleras om produktens namn
-            innehåller sökordet. stripos gör sökningen okänslig
-            för stora och små bokstäver.
-            */
+        foreach ($products as $product) {// Går igenom alla produkter i produktlistan
+
+            // Visar alla produkter om sökfältet är tomt, annars bara produkter som matchar sökordet
             if (
                 $search == '' ||
-                stripos($product['name'], $search) !== false
+                stripos($product['name'], $search) !== false // Söker efter sökordet i produktens namn och kontrollerar om det finns
             ) {
         ?>
             <div class="product-card">
+                <!-- Visar produktens bild -->
                 <img
                     src="<?php echo $product['image']; ?>"
                     alt="<?php echo htmlspecialchars($product['name']); ?>">
                 <h3>
-                    <?php echo htmlspecialchars($product['name']); ?>
+                    <?php echo htmlspecialchars($product['name']); ?>  <!-- Visar produktens namn -->
                 </h3>
                 <p>
-                    <?php echo $product['price']; ?> kr
+                    <?php echo $product['price']; ?> kr <!-- Visar produktens pris -->
                 </p>
-                <a href="Produktsida.php?id=<?php echo $product['id']; ?>">Visa produkt</a>
+                <a href="Produktsida.php?id=<?php echo $product['id']; ?>">Visa produkt</a> <!-- Länk till produktsidan för den valda produkten -->
             </div>
         <?php
             }

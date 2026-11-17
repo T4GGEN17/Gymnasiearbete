@@ -22,6 +22,21 @@ header{
 .logo{
     text-align:center;
 }
+/* ===== Välkomst text ===== */
+.welcome-container {
+    text-align: center;
+    margin: 20px auto 40px;
+}
+.welcome-container h2 {
+    color: #001f5c;
+    margin-bottom: 15px;
+}
+.welcome-text {
+    font-size: 18px;
+    color: #222;
+    text-align: center;
+    margin: 0;
+}
 /* ===== FOOTER ===== */
 .footer{
     margin-top:50px;
@@ -29,6 +44,20 @@ header{
     color:white;
     text-align:center;
     padding:20px;
+}
+html, body {
+    min-height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex: 1;
+}
+.products {
+    flex: 1;
 }
 /* Knappen med tre streck */
 .menu-button {
@@ -107,7 +136,7 @@ header{
 .close-button {
     position: absolute;
     top: 15px;
-    left: 20px;
+    right: 20px;
     background: none;
     border: none;
     color: white;
@@ -362,7 +391,7 @@ margin:0 auto;
 .product-page .product-info form button {
     margin: 0;
 }
-@media (max-width: 700px) {
+@media (max-width: 700px) {/* Anpassar webbplatsen för skärmar som är högst 700 pixlar breda */
     .product-page {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -471,7 +500,7 @@ margin:0 auto;
     margin: 20px;
     font-weight: bold;
 }
-@media (max-width: 600px) {
+@media (max-width: 600px) {/* Anpassar webbplatsen för skärmar som är högst 600 pixlar breda */
     .cart-page {
         padding: 12px;
     }

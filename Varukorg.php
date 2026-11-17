@@ -2,46 +2,43 @@
 session_start();
 // Ta bort eller ändra antal på en produkt
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Hämta produktens ID
     $id = (int) ($_POST['product_id'] ?? 0);
     if (isset($_SESSION['cart'][$id])) {
-        // Minska antalet med 1
         if (isset($_POST['decrease'])) {
             $_SESSION['cart'][$id]['quantity']--;
-            if ($_SESSION['cart'][$id]['quantity'] <= 0) {
-                unset($_SESSION['cart'][$id]);
-            }
         }
-        // Öka antalet med 1
         elseif (isset($_POST['increase'])) {
             $_SESSION['cart'][$id]['quantity']++;
         }
-        // Minska antalet med 10
         elseif (isset($_POST['decrease10'])) {
             $_SESSION['cart'][$id]['quantity'] -= 10;
-            if ($_SESSION['cart'][$id]['quantity'] <= 0) {
-                unset($_SESSION['cart'][$id]);
-            }
         }
-        // Öka antalet med 10
         elseif (isset($_POST['increase10'])) {
             $_SESSION['cart'][$id]['quantity'] += 10;
+        }
+        // Ändra till ett eget antal
+        elseif (isset($_POST['update_quantity'])) {
+            $antal = (int) ($_POST['quantity'] ?? 1);
+            if ($antal > 0) {
+                $_SESSION['cart'][$id]['quantity'] = $antal;
+            }
         }
         // Ta bort alla exemplar av produkten
         elseif (isset($_POST['remove_product'])) {
             unset($_SESSION['cart'][$id]);
         }
+        // Ta bort produkten om antalet blir 0 eller mindre
+        if (isset($_SESSION['cart'][$id])
+            && $_SESSION['cart'][$id]['quantity'] <= 0) {
+            unset($_SESSION['cart'][$id]);
+        }
     }
-    // Ladda om varukorgen
     header('Location: Varukorg.php');
     exit;
 }
-// Hämta varukorgen
 $cart = $_SESSION['cart'] ?? [];
-// Hämta meddelande
 $message = $_SESSION['cart_message'] ?? '';
 unset($_SESSION['cart_message']);
-// Räkna ut totalpriset
 $total = 0;
 foreach ($cart as $item) {
     $total += $item['price'] * $item['quantity'];
@@ -95,7 +92,25 @@ foreach ($cart as $item) {
                         <input type="hidden" name="product_id" value="<?php echo (int) $id; ?>">
                         <button type="submit" name="increase10">+10</button>
                     </form>
+                    <form action="Varukorg.php" method="POST">
+                        <input type="hidden" name="product_id"
+                               value="<?php echo (int) $id; ?>">
+                        <button type="submit" name="remove_product">
+                            Töm alla
+                        </button>
+                    </form>
                 </div>
+                <!-- Ändra till valfritt antal -->
+                <form action="Varukorg.php" method="POST">
+                    <input type="hidden" name="product_id"
+                           value="<?php echo (int) $id; ?>">
+
+                    <input type="number" name="quantity"
+                           min="1" value="<?php echo (int) $item['quantity']; ?>">
+                    <button type="submit" name="update_quantity">
+                        Uppdatera antal
+                    </button>
+                </form>
                     <p>
                         Delsumma:
                         <?php echo number_format(
@@ -116,5 +131,21 @@ foreach ($cart as $item) {
     <?php endif; ?>
 </main>
 <?php require_once 'assets/footer.php'; ?>
+<script>
+    // Spara sidans position innan formuläret skickas
+    document.querySelectorAll('form').forEach(function(form) {
+        form.addEventListener('submit', function() {
+            sessionStorage.setItem('scrollPosition', window.scrollY);
+        });
+    });
+    // Återställ positionen efter omladdning
+    window.addEventListener('load', function() {
+        const position = sessionStorage.getItem('scrollPosition');
+        if (position !== null) {
+            window.scrollTo(0, parseInt(position));
+            sessionStorage.removeItem('scrollPosition');
+        }
+    });
+</script>
 </body>
 </html>

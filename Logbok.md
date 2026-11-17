@@ -163,3 +163,22 @@ Idag hade jag problem med varukorgen, där jag försökte lägga till knappar f�
 - Flytta på kryset för att gå ut ur navigatorn till höger.
 - Göra så man kan köpa. 
 - När man loggat in ska det komma upp Hej och sen användarnamnet på startsidan.
+
+
+
+# 17 November 2026
+## Vad har jag gjort idag?
+Idag har jag fixat välkomsthälsningen på startsidan, ändrat navigeringsmenyn och arbetat med footern på favoritsidan. Jag har även förbättrat varukorgen så att man behåller sin position på sidan när man ändrar antal eller tar bort produkter.
+
+## Problem jag stötte på
+Välkomsttexten hamnade fel och hade fel färg. Jag löste det genom att ändra HTML- och CSS-koden. Varukorgen skickade användaren högst upp efter varje ändring. Jag löste detta med JavaScript som sparar och återställer scrollpositionen efter omladdning.
+
+## Minimum kvar att göra
+- Favoriter och varukorg sparas för användare.
+- Inte skickas till toppen av hemsidan när man lägger till saker i varukorgen när man trycker på knapparna. typ klar
+- Fixa vissa produktbilder som är små. 
+- Göra så man kan köpa. 
+- När man lägger in för många så blir det minus ta bort det.
+- Fixa footer på loggin sidan när man är utloggad.
+- Kunna skriva egna recensioner.
+- Ta bort välkomst medelandet när man är inloggad. 

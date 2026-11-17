@@ -6,37 +6,30 @@ if (!isset($_SESSION['favorites'])) {
     $_SESSION['favorites'] = [];
 }
 
-// Hämtar produktens id
-$id = isset($_GET['id']) ? (int) $_GET['id'] : 1;
+$id = isset($_GET['id']) ? (int) $_GET['id'] : 1;// Hämtar produktens id
 
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 1;/*Hämtar produktens id från länken. Om inget id skickas används id 1.*/
 
-/*
-Visar olika produkter beroende på vilket id som skickas från Alla_produkter.php
-*/
-/*
-Hämtar produktens id från länken.
-Om inget id skickas används id 1.
-*/
-$id = isset($_GET['id']) ? (int)$_GET['id'] : 1;
-// Hanterar när kunden lägger till en favorit
-if (isset($_POST['add_favorite'])) {
+if (isset($_POST['add_favorite'])) {// Kontrollera om kunden har tryckt på knappen för att lägga till en favorit
 
-    // Kontrollera om användaren är inloggad
-    if (!isset($_SESSION['user_id'])) {
-        header("Location: Inloggning.php");
+    if (!isset($_SESSION['user_id'])) {// Kontrollera om användaren är inloggad
+        header("Location: Inloggning.php");// Skicka användaren till inloggningssidan
         exit;
     }
 
-    // Kontrollerar om produkten redan är favorit
-    if (!in_array($id, $_SESSION['favorites'])) {
-        $_SESSION['favorites'][] = $id;
+    if (!in_array($id, $_SESSION['favorites'])) {// Kontrollera om produkten redan finns bland favoriterna
+        $_SESSION['favorites'][] = $id;// Lägg till produktens id i favoritlistan
+
+        // Spara ett meddelande om att produkten har lagts till
         $_SESSION['favorite_message'] = $product['name']
             . ' har lagts till i favoriter!';
     } else {
+        // Spara ett meddelande om att produkten redan är favorit
         $_SESSION['favorite_message'] = $product['name']
             . ' finns redan i favoriter!';
     }
 
+    // Ladda om produktsidan för den valda produkten
     header("Location: Produktsida.php?id=" . $id);
     exit;
 }

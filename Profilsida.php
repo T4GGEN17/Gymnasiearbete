@@ -1,9 +1,8 @@
 <?php
 session_start();
 require_once 'assets/db.php';
-// Kontrollera om användaren är inloggad
-if (!isset($_SESSION["user_id"])) {
-    header("Location: Inloggning.php");
+if (!isset($_SESSION["user_id"])) {// Kontrollera om användaren är inloggad
+    header("Location: Inloggning.php");// Skicka användaren till inloggningssidan om den inte är inloggad
     exit;
 }
 // Hämta användarens uppgifter från databasen
@@ -11,16 +10,16 @@ $stmt = $conn->prepare(
     "SELECT namn, `användarnamn`, email, adress, postnummer, ort, telefon
     FROM users WHERE user_id = ?"
 );
-$stmt->bind_param("i", $_SESSION["user_id"]);
-$stmt->execute();
-$result = $stmt->get_result();
-$user = $result->fetch_assoc();
-$stmt->close();
-// Logga ut användaren
-if (isset($_POST["logout"])) {
-    session_unset();
-    session_destroy();
-    header("Location: Inloggning.php");
+$stmt->bind_param("i", $_SESSION["user_id"]);// Koppla användarens ID till SQL-frågan
+$stmt->execute();// Kör SQL-frågan
+$result = $stmt->get_result();// Hämta resultatet från databasen
+$user = $result->fetch_assoc();// Spara användarens uppgifter i variabeln $user
+$stmt->close();// Stäng SQL-frågan
+
+if (isset($_POST["logout"])) {// Kontrollera om användaren har tryckt på logga ut
+    session_unset();// Ta bort all sessionsinformation
+    session_destroy();// Avsluta sessionen
+    header("Location: Inloggning.php");// Skicka användaren till inloggningssidan
     exit;
 }
 ?>
@@ -38,24 +37,31 @@ if (isset($_POST["logout"])) {
     <h1>Min profil</h1>
     <?php if ($user): ?>
         <div class="profile-info">
+            <!-- Visa användarens namn -->
             <p><strong>Namn:</strong>
                 <?php echo htmlspecialchars($user["namn"]); ?>
             </p>
+            <!-- Visa användarnamnet -->
             <p><strong>Användarnamn:</strong>
                 <?php echo htmlspecialchars($user["användarnamn"]); ?>
             </p>
+            <!-- Visa användarens e-postadress -->
             <p><strong>E-post:</strong>
                 <?php echo htmlspecialchars($user["email"]); ?>
             </p>
+            <!-- Visa användarens adress -->
             <p><strong>Adress:</strong>
                 <?php echo htmlspecialchars($user["adress"]); ?>
             </p>
+            <!-- Visa användarens postnummer -->
             <p><strong>Postnummer:</strong>
                 <?php echo htmlspecialchars($user["postnummer"]); ?>
             </p>
+            <!-- Visa användarens ort -->
             <p><strong>Ort:</strong>
                 <?php echo htmlspecialchars($user["ort"]); ?>
             </p>
+            <!-- Visa användarens telefonnummer -->
             <p><strong>Telefon:</strong>
                 <?php echo htmlspecialchars($user["telefon"]); ?>
             </p>

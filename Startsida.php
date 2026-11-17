@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -12,6 +15,16 @@
 <?php
 require_once 'assets/header.php';
 ?>
+<div class="welcome-container">
+    <h2>
+        Hej <?php echo htmlspecialchars($_SESSION["anvandarnamn"]); ?>! <!-- Visar ett välkomstmeddelande med användarens användarnamn -->
+    </h2>
+    <h3>Välkommen tillbaka till Red Bull Shop!</h3>
+    <p class="welcome-text">
+        Vad roligt att du är här. Utforska vårt sortiment
+        och hitta dina favoritsmaker.
+    </p>
+</div>
 <section class="hero">
     <h2>
         Alla dina favorit-smaker av Red Bull
