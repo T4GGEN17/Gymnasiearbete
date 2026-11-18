@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();// Stäng SQL-frågan
 }
 ?>
-<?php require_once 'assets/header.php'; ?>
+
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -55,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php require_once 'assets/header.php'; ?>
     <main class="login-container">
         <h1>Logga in</h1>
         <?php if ($felmeddelande != ""): ?>

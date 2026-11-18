@@ -181,4 +181,23 @@ Välkomsttexten hamnade fel och hade fel färg. Jag löste det genom att ändra 
 - När man lägger in för många så blir det minus ta bort det.
 - Fixa footer på loggin sidan när man är utloggad.
 - Kunna skriva egna recensioner.
-- Ta bort välkomst medelandet när man är inloggad. 
+- Ta bort välkomst medelandet när man inte är inloggad. 
+
+
+
+# 18 November 2026
+## Vad har jag gjort idag?
+Idag har jag fixat så footern är längst ner när man är utloggad på login-sidan och när man sökt upp produkter, jag har även gjort så välkomstmeddelandet bara syns när man är inloggad. Därefter har jag gjort så man kan max lägga till saker i varukorgen det som finns i lager, samt kodkommentarer.
+
+## Problem jag stötte på
+Jag hade problem med att begränsa antalet produkter i varukorgen så att kunden inte kunde lägga till fler produkter än vad som finns i lager. Jag behövde därför lägga till kontroller som jämför antalet i varukorgen med produktens lagersaldo. 
+
+## Minimum kvar att göra
+- Favoriter och varukorg sparas för användare.
+- Inte skickas till toppen av hemsidan när man lägger till saker i varukorgen när man trycker på knapparna. typ klar
+- Fixa vissa produktbilder som är små. 
+- Göra så man kan köpa. 
+- Kunna skriva egna recensioner.
+- Göra så man inte faktiskt kan skriva något negativt i varukorgen och om man skriver 0 och enter så ska produkten försvinna.
+- Göra så man kan se historiken av vad man har beställt för varje användare.
+- Göra så man kan ändra sina uppgifter så som användarnamn, lösernod, ort, adress, postnummer och telefonnummer

@@ -5,34 +5,8 @@ session_start();
 if (!isset($_SESSION['favorites'])) {
     $_SESSION['favorites'] = [];
 }
-
-$id = isset($_GET['id']) ? (int) $_GET['id'] : 1;// Hämtar produktens id
-
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 1;/*Hämtar produktens id från länken. Om inget id skickas används id 1.*/
 
-if (isset($_POST['add_favorite'])) {// Kontrollera om kunden har tryckt på knappen för att lägga till en favorit
-
-    if (!isset($_SESSION['user_id'])) {// Kontrollera om användaren är inloggad
-        header("Location: Inloggning.php");// Skicka användaren till inloggningssidan
-        exit;
-    }
-
-    if (!in_array($id, $_SESSION['favorites'])) {// Kontrollera om produkten redan finns bland favoriterna
-        $_SESSION['favorites'][] = $id;// Lägg till produktens id i favoritlistan
-
-        // Spara ett meddelande om att produkten har lagts till
-        $_SESSION['favorite_message'] = $product['name']
-            . ' har lagts till i favoriter!';
-    } else {
-        // Spara ett meddelande om att produkten redan är favorit
-        $_SESSION['favorite_message'] = $product['name']
-            . ' finns redan i favoriter!';
-    }
-
-    // Ladda om produktsidan för den valda produkten
-    header("Location: Produktsida.php?id=" . $id);
-    exit;
-}
 $products = [
     1 => [
         "name" => "Red Bull Original",
@@ -176,29 +150,55 @@ $products = [
     ]
 ];
 
-/*
-Kontrollerar om produkten finns.
-Om inte visas produkt 1.
-*/
-$product = isset($products[$id]) ? $products[$id] : $products[1];
-// Hanterar när kunden lägger en produkt i varukorgen
-if ($_SERVER['REQUEST_METHOD'] === 'POST'
-    && isset($_POST['add_to_cart'])) {
-    // Kontrollera om användaren är inloggad
+$product = isset($products[$id]) ? $products[$id] : $products[1];// Hämtar produkten med rätt id eller väljer produkt 1 om id saknas
+// Hanterar när kunden lägger till en favorit
+if (isset($_POST['add_favorite'])) {
     if (!isset($_SESSION['user_id'])) {
         header("Location: Inloggning.php");
         exit;
     }
-    $cartId = $id;
-    // Skapar varukorgen om den inte redan finns
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = [];
+    if (!in_array($id, $_SESSION['favorites'])) {// Kontrollerar om produkten inte redan finns bland favoriterna
+        $_SESSION['favorites'][] = $id;// Lägger till produktens id i favoritlistan
+
+        // Sparar ett meddelande om att produkten har lagts till
+        $_SESSION['favorite_message'] = $product['name']
+            . ' har lagts till i favoriter!';
+    } else {
+        // Sparar ett meddelande om att produkten redan finns bland favoriterna
+        $_SESSION['favorite_message'] = $product['name']
+            . ' finns redan i favoriter!';
     }
-    // Ökar antalet om produkten redan finns
+    header("Location: Produktsida.php?id=" . $id);// Skickar tillbaka kunden till produktsidan för samma produkt
+    exit;
+}
+// Hanterar när kunden lägger en produkt i varukorgen
+if ($_SERVER['REQUEST_METHOD'] === 'POST'
+    && isset($_POST['add_to_cart'])) {
+    
+    if (!isset($_SESSION['user_id'])) {// Kontrollera om användaren är inloggad
+        header("Location: Inloggning.php");// Skicka användaren till inloggningssidan
+        exit;
+    }
+    $cartId = $id;// Hämtar produktens id
+    // Skapar varukorgen om den inte redan finns
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+// Hämtar hur många exemplar som redan finns i varukorgen
+$antal = $_SESSION['cart'][$cartId]['quantity'] ?? 0;
+
+if ($antal >= $product['stock']) {// Kontrollera om produkten finns i lager
+
+    // Visa meddelande om att maxantalet har uppnåtts
+    $_SESSION['cart_message'] = 'Finns inte i lager. Maxantalet är '
+        . $product['stock'] . ' st.';
+} else {
+    // Öka antalet om produkten redan finns
     if (isset($_SESSION['cart'][$cartId])) {
         $_SESSION['cart'][$cartId]['quantity']++;
     } else {
-        // Sparar produktens information i varukorgen
+        // Lägg till produkten i varukorgen
         $_SESSION['cart'][$cartId] = [
             'name' => $product['name'],
             'price' => $product['price'],
@@ -206,10 +206,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
             'quantity' => 1
         ];
     }
-    // Sparar ett meddelande som visas i varukorgen
+    // Visa meddelande om att produkten har lagts till
     $_SESSION['cart_message'] = $product['name']
         . ' har lagts till i varukorgen!';
-    header('Location: Varukorg.php');
+}
+    header('Location: Varukorg.php');// Skickar användaren till varukorgen
     exit;
 }
 ?>
@@ -225,39 +226,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
 <?php
 require_once 'assets/header.php';
 ?>
+<!-- Visar produktens bild och information -->
 <section class="product-page">
+    <!-- Visar produktens bild -->
     <div class="product-image">
         <img
             src="<?php echo htmlspecialchars($product['image']); ?>"
             alt="<?php echo htmlspecialchars($product['name']); ?>">
     </div>
+    <!-- Visar produktens information -->
     <div class="product-info">
         <h2>
             <?php echo htmlspecialchars($product['name']); ?>
         </h2>
         <?php
-        // Hämtar meddelandet
+        // Hämtar meddelandet om favoriten
         $favoriteMessage = $_SESSION['favorite_message'] ?? '';
         // Tar bort meddelandet efter att det hämtats
         unset($_SESSION['favorite_message']);
         ?>
+<!-- Visar favoritmeddelandet om det finns -->
 <?php if ($favoriteMessage !== ''): ?>
     <p class="favorite-message">
         <?php echo htmlspecialchars($favoriteMessage); ?>
     </p>
 <?php endif; ?>
+        <!-- Visar produktens pris -->
         <p class="price">
             Pris: <?php echo $product['price']; ?> kr
         </p>
+        <!-- Visar produktens beskrivning -->
         <p>
             <?php echo htmlspecialchars($product['description']); ?>
         </p>
+        <!-- Visar hur många produkter som finns i lager -->
         <p>
             Lager: <?php echo $product['stock']; ?> st
         </p>
+        <!-- Formulär för att lägga produkten i varukorgen -->
         <form action="Produktsida.php?id=<?php echo $id; ?>" method="POST">
             <button type="submit" name="add_to_cart">Lägg i varukorg</button>
         </form>
+        <!-- Formulär för att lägga produkten bland favoriter -->
         <form action="Produktsida.php?id=<?php echo $id; ?>"
               method="POST">
                 <button type="submit" name="add_favorite">

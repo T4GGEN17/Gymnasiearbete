@@ -1,26 +1,69 @@
 <?php
 session_start();
+// Hämtar produkternas lagersaldo
+$stock = [
+    1 => 150,
+    2 => 120,
+    3 => 95,
+    4 => 80,
+    5 => 100,
+    6 => 100,
+    7 => 75,
+    8 => 70,
+    9 => 60,
+    10 => 65,
+    11 => 50,
+    12 => 45,
+    13 => 70,
+    14 => 70,
+    15 => 70,
+    16 => 60,
+    17 => 55,
+    18 => 55,
+    19 => 40,
+    20 => 35
+];
 // Ta bort eller ändra antal på en produkt
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = (int) ($_POST['product_id'] ?? 0);
     if (isset($_SESSION['cart'][$id])) {
+        $maxLager = $stock[$id] ?? 0;
+        $nuvarandeAntal = $_SESSION['cart'][$id]['quantity'];
         if (isset($_POST['decrease'])) {
             $_SESSION['cart'][$id]['quantity']--;
         }
         elseif (isset($_POST['increase'])) {
-            $_SESSION['cart'][$id]['quantity']++;
+            if ($nuvarandeAntal < $maxLager) {
+                $_SESSION['cart'][$id]['quantity']++;
+            } else {
+                $_SESSION['cart_message'] = 'Maxantalet är '
+                    . $maxLager . ' st.';
+            }
         }
         elseif (isset($_POST['decrease10'])) {
             $_SESSION['cart'][$id]['quantity'] -= 10;
         }
         elseif (isset($_POST['increase10'])) {
-            $_SESSION['cart'][$id]['quantity'] += 10;
+            $nyttAntal = $nuvarandeAntal + 10;
+            if ($nyttAntal > $maxLager) {
+                $_SESSION['cart'][$id]['quantity'] = $maxLager;
+                $_SESSION['cart_message'] = 'Maxantalet är '
+                    . $maxLager . ' st.';
+            } else {
+                $_SESSION['cart'][$id]['quantity'] = $nyttAntal;
+            }
         }
         // Ändra till ett eget antal
         elseif (isset($_POST['update_quantity'])) {
             $antal = (int) ($_POST['quantity'] ?? 1);
             if ($antal > 0) {
-                $_SESSION['cart'][$id]['quantity'] = $antal;
+                if ($antal > $maxLager) {
+                    $_SESSION['cart'][$id]['quantity'] = $maxLager;
+                    $_SESSION['cart_message'] = 'Maxantalet är '
+                        . $maxLager . ' st.';
+                } else {
+                    $_SESSION['cart'][$id]['quantity'] = $antal;
+                }
             }
         }
         // Ta bort alla exemplar av produkten
@@ -56,6 +99,11 @@ foreach ($cart as $item) {
 <?php require_once 'assets/header.php'; ?>
 <main class="cart-page">
     <h1>Min varukorg</h1>
+    <?php if ($message !== ''): ?>
+    <p class="cart-message">
+        <?php echo htmlspecialchars($message); ?>
+    </p>
+<?php endif; ?>
     <?php if (empty($cart)): ?>
         <p>Din varukorg är tom.</p>
         <a href="Alla_produkter.php">Fortsätt handla</a>

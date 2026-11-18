@@ -59,6 +59,12 @@ main {
 .products {
     flex: 1;
 }
+.login-container {
+    flex: 1;
+}
+.products-page {
+    flex: 1;
+}
 /* Knappen med tre streck */
 .menu-button {
     position: absolute;

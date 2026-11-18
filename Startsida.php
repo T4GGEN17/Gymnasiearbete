@@ -15,6 +15,7 @@ session_start();
 <?php
 require_once 'assets/header.php';
 ?>
+<?php if (isset($_SESSION["anvandarnamn"])): ?>
 <div class="welcome-container">
     <h2>
         Hej <?php echo htmlspecialchars($_SESSION["anvandarnamn"]); ?>! <!-- Visar ett välkomstmeddelande med användarens användarnamn -->
@@ -25,6 +26,7 @@ require_once 'assets/header.php';
         och hitta dina favoritsmaker.
     </p>
 </div>
+<?php endif; ?>
 <section class="hero">
     <h2>
         Alla dina favorit-smaker av Red Bull
