@@ -314,6 +314,51 @@ margin:0 auto;
     border-radius: 5px;
     text-align: center;
 }
+/* Formuläret för att ändra profiluppgifter */
+.profile-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin-top: 20px;
+}
+/* Etiketterna ovanför inmatningsfälten */
+.profile-edit-form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 5px;
+}
+/* Inmatningsfälten */
+.profile-edit-form input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+/* Knapparna i profilformuläret */
+.profile-edit-form button,
+.profile-logout-form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #001f5c;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+/* Färg när musen hålls över knapparna */
+.profile-edit-form button:hover,
+.profile-logout-form button:hover {
+    background-color: #003580;
+}
+/* Avstånd före utloggningsknappen */
+.profile-logout-form {
+    margin-top: 5px;
+}
 /* ===== PROFIL ===== */
 .profile-container{
     width:800px;

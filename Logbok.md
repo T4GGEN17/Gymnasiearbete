@@ -201,3 +201,21 @@ Jag hade problem med att begränsa antalet produkter i varukorgen så att kunden
 - Göra så man inte faktiskt kan skriva något negativt i varukorgen och om man skriver 0 och enter så ska produkten försvinna.
 - Göra så man kan se historiken av vad man har beställt för varje användare.
 - Göra så man kan ändra sina uppgifter så som användarnamn, lösernod, ort, adress, postnummer och telefonnummer
+
+
+
+# 20 November 2026
+## Vad har jag gjort idag?
+Idag har jag arbetat med profilsidan i min Red Bull Shop. Jag har lagt till en funktion så att användaren kan ändra sina uppgifter, till exempel användarnamn, lösenord, adress, postnummer, ort och telefonnummer. Jag har även förbättrat CSS:en så att formuläret får en tydligare layout och att inmatningsfälten hamnar under varandra. Jag har också funderat på möjligheten att låta användaren ändra sin e-postadress.
+
+## Problem jag stötte på
+Ett problem jag stötte på var att formuläret på profilsidan inte såg bra ut. Inmatningsfälten och etiketterna hamnade bredvid varandra och gjorde sidan rörig. Jag löste detta genom att ändra CSS:en. 
+
+## Minimum kvar att göra
+- Favoriter och varukorg sparas för användare.
+- Inte skickas till toppen av hemsidan när man lägger till saker i varukorgen när man trycker på knapparna. typ klar
+- Fixa vissa produktbilder som är små. 
+- Göra så man kan köpa. 
+- Kunna skriva egna recensioner.
+- Göra så man kan se historiken av vad man har beställt för varje användare.
+- kanske göra så man kan ändra epost.

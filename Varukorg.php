@@ -55,17 +55,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         // Ändra till ett eget antal
         elseif (isset($_POST['update_quantity'])) {
-            $antal = (int) ($_POST['quantity'] ?? 1);
-            if ($antal > 0) {
-                if ($antal > $maxLager) {
-                    $_SESSION['cart'][$id]['quantity'] = $maxLager;
-                    $_SESSION['cart_message'] = 'Maxantalet är '
-                        . $maxLager . ' st.';
-                } else {
-                    $_SESSION['cart'][$id]['quantity'] = $antal;
-                }
-            }
-        }
+                $antal = (int) ($_POST['quantity'] ?? 0);
+
+        // Ta bort produkten om kunden skriver 0 eller mindre
+            if ($antal <= 0) {
+                unset($_SESSION['cart'][$id]);
+            } 
+        // Kontrollera att antalet inte överstiger lagersaldot
+        elseif ($antal > $maxLager) {
+                $_SESSION['cart'][$id]['quantity'] = $maxLager;
+                $_SESSION['cart_message'] = 'Maxantalet är '
+                    . $maxLager . ' st.';
+        } else {
+        // Uppdatera produktens antal
+        $_SESSION['cart'][$id]['quantity'] = $antal;
+    }
+}
         // Ta bort alla exemplar av produkten
         elseif (isset($_POST['remove_product'])) {
             unset($_SESSION['cart'][$id]);
@@ -154,7 +159,10 @@ foreach ($cart as $item) {
                            value="<?php echo (int) $id; ?>">
 
                     <input type="number" name="quantity"
-                           min="1" value="<?php echo (int) $item['quantity']; ?>">
+                            min="0"
+                            max="<?php echo $stock[$id]; ?>"
+                            oninput="if (this.value < 0) this.value = 0;"
+                            value="<?php echo (int) $item['quantity']; ?>">
                     <button type="submit" name="update_quantity">
                         Uppdatera antal
                     </button>
